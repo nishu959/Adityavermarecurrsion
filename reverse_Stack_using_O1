@@ -1,0 +1,25 @@
+n = int(input())
+s = list(map(int, input().split()))
+
+
+def insert(s, temp):
+    if len(s) == 0:
+        s.append(temp) 
+        return
+    ele = s.pop()
+    insert(s, temp)
+    s.append(ele)
+    
+
+def fun(s):
+    if len(s) == 1:
+        return 
+    temp = s[-1]
+    s.pop()
+    fun(s)
+    insert(s, temp)
+
+
+fun(s)
+print(s)
+    
