@@ -1,0 +1,23 @@
+n = int(input())
+s = list(map(int, input().split()))
+
+
+def fun(s, k):
+    if k == 1:
+        s.pop()
+        return 
+    temp = s[-1]
+    s.pop()
+    fun(s, k - 1)
+    s.append(temp)
+    
+
+k = 0
+if len(s) % 2 == 0:
+    k = len(s) // 2
+else:
+    k = ((len(s) // 2) + 1)
+fun(s, k)
+
+print(s)
+    
