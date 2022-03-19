@@ -1,0 +1,22 @@
+n = int(input())   
+a = list(map(int,input().split()))
+
+
+def insert(a, temp):
+    if len(a)==0 or a[-1]<=temp:
+        a.append(temp)
+        return
+    val = a.pop()
+    insert(a,temp)
+    a.append(val)
+
+def sort(a ,n):
+    if n==1:
+        return 
+    temp = a.pop()
+    sort(a,n-1)
+    insert(a,temp)
+
+print(a)    
+sort(a,n)
+print(a)
