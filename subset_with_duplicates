@@ -1,0 +1,19 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        s = set()
+        def subset(inp , op):
+            if(len(inp)==0):
+                s.add(tuple(sorted(op)))
+                return
+            op1 = copy.copy(op)
+            op2 = copy.copy(op)
+            op2.append(inp[0])
+            subset(inp[1:],op1)
+            subset(inp[1:],op2)
+            return
+            
+        subset(nums, [])
+        
+        return s
+        
+        
