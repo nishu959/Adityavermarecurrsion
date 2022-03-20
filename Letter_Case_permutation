@@ -1,0 +1,27 @@
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        l = []
+        import copy
+        def fun(inp,op):
+            if len(inp)==0:
+                l.append(op)
+                return 
+            op1 = copy.copy(op)
+            op2 = copy.copy(op)
+            
+            if inp[0].isdigit():
+                op1 += inp[0]
+                fun(inp[1:],op1)
+                
+            else:
+                op1 += inp[0].upper()
+                op2 += inp[0].lower()
+                fun(inp[1:],op1)
+                fun(inp[1:],op2)
+                
+        fun(s,"")
+        return l
+            
+        
+            
+        
