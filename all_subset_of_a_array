@@ -1,0 +1,16 @@
+n = list(map(int, input().split()))
+s = []
+import copy
+
+def fun(inp, op):
+  if len(inp)==0:
+    s.append(op)
+    return 
+  op1 = copy.copy(op)
+  op2 = copy.copy(op)
+  op2.append(inp[0])
+  fun(inp[1:],op1)
+  fun(inp[1:],op2)
+
+fun(n, [])
+print(s)
