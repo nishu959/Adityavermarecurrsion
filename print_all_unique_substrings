@@ -1,0 +1,17 @@
+n = input()
+s = set()
+
+
+def fun(inp, op):
+    if len(inp) == 0:
+        s.add(op)
+        return 
+    op1 = op
+    op2 = op
+    op2 += inp[0]
+    fun(inp[1:], op1)
+    fun(inp[1:], op2)
+
+
+fun(n, "")
+print(s)
