@@ -1,0 +1,23 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        l = []
+        def fun(opn, close , op):
+            if opn==0 and close == 0:
+                l.append(op)
+                return 
+            if opn!=0:
+                op1 = op
+                op1 += "("
+                fun(opn-1, close,op1)
+            if (close > opn):
+                op2 = op
+                op2 += ")"
+                fun(opn,close-1,op2)
+            return
+        
+        fun(n,n,"")
+        return l
+                
+                
+                
+        
