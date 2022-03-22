@@ -1,0 +1,20 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        import copy
+        l = []
+        def fun(inp , op):
+            if len(inp)==0:
+                l.append(op)
+                return
+            for i in range(len(inp)):
+                op1 = copy.copy(op)  
+                op1.append(inp[i])
+                p =inp[:i] + inp[i+1:]
+                fun(p, op1)
+        
+        fun(nums,[])
+        return l
+            
+            
+        
+        
