@@ -1,17 +1,15 @@
 class Solution:
-    def findTheWinner(self, n: int, k: int) -> int:
+    def safePos(self, n, k):
+        # code here 
         l = []
-        def fun(l,k,ci):
-            global ans
-            if len(l)==1:
-                ans = l[0]
-                return ans
-            ci = (ci+k)%len(l) 
-            l.remove(l[ci])
-            fun(l,k,ci)
-            return
-        
-        for i in range(1,n+1):
+        for i in range(1, n+1):
             l.append(i)
-        fun(l,k-1,0)
-        return ans
+            
+        def fun(l , k , ci):
+            if len(l)==1:
+                return l[0]
+                
+            ci = (ci+k)%len(l)
+            return fun(l[:ci]+l[ci+1:], k, ci)
+            
+        return fun(l, k-1, 0)
