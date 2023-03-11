@@ -1,0 +1,19 @@
+class Solution:
+    def permutation (self, S):
+        # code here
+        ans= []
+        def fun(ip, op):
+            if len(ip)==0:
+                ans.append(op)
+                return
+            
+            op1 = op + ip[0]
+            op2 = op + " " + ip[0]
+            
+
+            fun(ip[1:], op1)
+            fun(ip[1:], op2)
+            
+        fun(S[1:], S[0])
+        ans.sort()
+        return ans
