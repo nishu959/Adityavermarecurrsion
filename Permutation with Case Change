@@ -1,0 +1,15 @@
+n = input("given input: ")
+ans = []
+def fun(ip , op):
+    if len(ip)==0:
+        ans.append(op)
+        return
+    op1 = op + ip[0].upper()
+    op2 = op + ip[0].lower()
+    
+    fun(ip[1:], op1)
+    fun(ip[1:], op2)
+    
+    
+fun(n , "")
+print(ans)
