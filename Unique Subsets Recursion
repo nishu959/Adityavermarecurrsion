@@ -1,0 +1,29 @@
+class Solution:
+    
+    #Function to find all possible unique subsets.
+    def AllSubsets(self, arr,n):
+        #code here
+        
+        ans = set()
+        
+        def fun(ip , op):
+            
+            if len(ip)==0:
+                
+                ans.add(tuple(op))
+                return
+            
+            op2 = op[:]
+            op2.append(ip[0])
+            fun(ip[1:], op)
+            
+            fun(ip[1:], op2)
+            
+        
+        
+        arr.sort()
+        
+        fun(arr, [])
+        ans = list(map(list , ans))
+        ans.sort()
+        return ans
